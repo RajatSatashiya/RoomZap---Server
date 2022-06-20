@@ -6,9 +6,11 @@ const express = require("express");
 const mongoose = require("mongoose");
 const userRouter = require("./routes/user");
 const rentalRouter = require("./routes/rental");
+const cors = require("cors");
 
 //create the server
 const app = express();
+app.use(cors());
 app.use(express.json());
 
 //mongo connection

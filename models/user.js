@@ -17,7 +17,6 @@ const userSchema = new Schema(
     },
     dob: {
       type: Date,
-      required: true,
     },
     email: {
       type: String,
@@ -27,7 +26,6 @@ const userSchema = new Schema(
     },
     contact: {
       type: Number,
-      required: true,
     },
     verified: {
       type: Boolean,
@@ -47,7 +45,6 @@ const userSchema = new Schema(
       type: String,
       enum: ["user", "Host"],
       default: "user",
-      required: true,
     },
     rentals: [
       {
