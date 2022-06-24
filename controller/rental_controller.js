@@ -13,7 +13,17 @@ module.exports.getAllRentals = async (req, res) => {
 
 module.exports.createRentals = async (req, res) => {
   try {
+    var { apartmentNumber, city, country, street, state, postcode } = req.body;
+    var location = {
+      apartmentNumber,
+      city,
+      country,
+      street,
+      state,
+      postcode,
+    };
     const rental = Rental(req.body);
+    rental.location = location;
     await rental.save();
     await User.findByIdAndUpdate(req.body.id, {
       $push: {

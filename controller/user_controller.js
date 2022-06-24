@@ -4,7 +4,6 @@ const auth = require("../middleware/auth");
 
 module.exports.signUp = async (req, res) => {
   try {
-    console.log("i was called");
     const user = User(req.body);
     const salt = await bcrypt.genSalt(10);
     user.password = await bcrypt.hash(user.password, salt);
