@@ -41,10 +41,18 @@ module.exports.signIn = async (req, res) => {
 
 module.exports.updateUser = async (req, res) => {
   try {
-    await User.findByIdAndUpdate(req.body.id, req.body);
-    return res.status(201).json({ status: "success" });
+    await User.findByIdAndUpdate(req.user._id, req.body);
+    return res.status(201).json({ status: "Success" });
   } catch (e) {
     console.log(e);
+    return res.status(400).json({ status: "failure", message: e });
+  }
+};
+
+module.exports.getDetails = async (req, res) => {
+  try {
+    return res.status(201).json({ status: "Success", message: req.user });
+  } catch (e) {
     return res.status(400).json({ status: "failure", message: e });
   }
 };

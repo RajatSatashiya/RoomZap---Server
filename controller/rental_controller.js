@@ -24,6 +24,7 @@ module.exports.createRentals = async (req, res) => {
     };
     const rental = Rental(req.body);
     rental.location = location;
+    rental.owner = req.user._id;
     await rental.save();
     await User.findByIdAndUpdate(req.body.id, {
       $push: {

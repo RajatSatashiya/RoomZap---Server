@@ -11,6 +11,10 @@ const rentalSchema = Schema({
     type: String,
     required: true,
   },
+  owner: {
+    type: mongoose.Schema.Types.ObjectId,
+    ref: "User",
+  },
   roomType: {
     type: String,
     enum: ["Entire Apartment", "Private Room", "1-Room", "2-Room", "3+ Rooms"],
